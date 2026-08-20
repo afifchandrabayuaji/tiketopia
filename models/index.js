@@ -1,43 +1,41 @@
-'use strict';
+const sequelize = require("../config/db");
+const User = require("./User");
+const Province = require("./Province");
+const Destination = require("./Destination");
+const Ticket = require("./Ticket");
+const Transaction = require("./Transaction");
+const Comment = require("./Comment");
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const process = require('process');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
+// Province - Destination (1..N)
+Province.hasMany(Destination, { foreignKey: "provinceId", as: "destinations" });
+Destination.belongsTo(Province, { foreignKey: "provinceId", as: "province" });
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+// Destination - Ticket (1..N)
+Destination.hasMany(Ticket, { foreignKey: "destinationId", as: "tickets" });
+Ticket.belongsTo(Destination, { foreignKey: "destinationId", as: "destination" });
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (
-      file.indexOf('.') !== 0 &&
-      file !== basename &&
-      file.slice(-3) === '.js' &&
-      file.indexOf('.test.js') === -1
-    );
-  })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
+// User - Transaction (1..N)
+User.hasMany(Transaction, { foreignKey: "userId", as: "transactions" });
+Transaction.belongsTo(User, { foreignKey: "userId", as: "user" });
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
+// Ticket - Transaction (1..N)
+Ticket.hasMany(Transaction, { foreignKey: "ticketId", as: "transactions" });
+Transaction.belongsTo(Ticket, { foreignKey: "ticketId", as: "ticket" });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+// User - Comment (1..N)
+User.hasMany(Comment, { foreignKey: "userId", as: "comments" });
+Comment.belongsTo(User, { foreignKey: "userId", as: "user" });
 
-module.exports = db;
+// Destination - Comment (1..N)
+Destination.hasMany(Comment, { foreignKey: "destinationId", as: "comments" });
+Comment.belongsTo(Destination, { foreignKey: "destinationId", as: "destination" });
+
+module.exports = {
+  sequelize,
+  User,
+  Province,
+  Destination,
+  Ticket,
+  Transaction,
+  Comment,
+};

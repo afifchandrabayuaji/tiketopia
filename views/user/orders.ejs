@@ -1,0 +1,32 @@
+<section class="max-w-5xl mx-auto px-4 py-10">
+  <h1 class="text-2xl font-bold mb-6">Pesanan Saya</h1>
+
+  <% if (transactions.length === 0) { %>
+    <div class="bg-white border border-gray-100 rounded-xl p-10 text-center text-gray-400">
+      Anda belum memiliki pesanan. <a href="/destinations" class="text-green-800 font-medium hover:underline">Cari destinasi</a>
+    </div>
+  <% } else { %>
+    <div class="space-y-4">
+      <% transactions.forEach(function(t) { %>
+        <div class="bg-white border border-gray-100 rounded-xl p-5 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+          <div class="flex items-center gap-4">
+            <img src="<%= t.ticket.destination.image || 'https://images.unsplash.com/photo-1596402184320-417e7178b2cd?w=200' %>" class="w-20 h-20 object-cover rounded-lg" alt="<%= t.ticket.destination.name %>" />
+            <div>
+              <p class="font-semibold"><%= t.ticket.destination.name %></p>
+              <p class="text-xs text-gray-400">Kode: TRX-<%= String(t.id).padStart(6,'0') %></p>
+              <p class="text-xs text-gray-500 mt-1"><%= new Date(t.orderDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) %> · <%= t.quantityAdult %> Dewasa, <%= t.quantityChild %> Anak</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="font-bold text-green-800">Rp<%= Number(t.totalAmount).toLocaleString('id-ID') %></p>
+            <span class="inline-block mt-1 text-xs font-medium px-2 py-1 rounded-full <%= t.status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600' %>">
+              <%= t.status === 'paid' ? 'LUNAS' : t.status.toUpperCase() %>
+            </span>
+            <br/>
+            <a href="/destinations/<%= t.ticket.destination.id %>" class="text-xs text-green-800 hover:underline">Lihat Destinasi</a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
