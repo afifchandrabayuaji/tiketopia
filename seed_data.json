@@ -1,0 +1,132 @@
+{
+  "provinces": [
+    {
+      "name": "Bali",
+      "DestinationId": 1
+    },
+    {
+      "name": "DI Yogyakarta",
+      "DestinationId": 2
+    },
+    {
+      "name": "Jawa Barat",
+      "DestinationId": 3
+    },
+    {
+      "name": "Nusa Tenggara Timur",
+      "DestinationId": 4
+    }
+  ],
+
+  "destinations": [
+    {
+      "name": "Pantai Kuta",
+      "description": "Pantai populer di Bali dengan pemandangan matahari terbenam yang indah",
+      "image": "kuta-beach.jpg",
+      "ProvinceId": 1
+    },
+    {
+      "name": "Candi Borobudur",
+      "description": "Candi Buddha terbesar di dunia, warisan budaya UNESCO",
+      "image": "borobudur.jpg",
+      "ProvinceId": 2
+    },
+    {
+      "name": "Kawah Putih",
+      "description": "Danau kawah vulkanik dengan air berwarna putih kehijauan",
+      "image": "kawah-putih.jpg",
+      "ProvinceId": 3
+    },
+    {
+      "name": "Pulau Komodo",
+      "description": "Habitat asli komodo, taman nasional warisan dunia",
+      "image": "komodo-island.jpg",
+      "ProvinceId": 4
+    }
+  ],
+
+  "users": [
+    {
+      "email": "admin@travelapp.com",
+      "password": "$2b$10$hashedpasswordadmin123",
+      "role": "admin",
+      "balance": 5000000
+    },
+    {
+      "email": "budi.santoso@gmail.com",
+      "password": "$2b$10$hashedpasswordbudi123",
+      "role": "user",
+      "balance": 1500000
+    },
+    {
+      "email": "siti.aminah@gmail.com",
+      "password": "$2b$10$hashedpasswordsiti123",
+      "role": "user",
+      "balance": 750000
+    },
+    {
+      "email": "andi.wijaya@gmail.com",
+      "password": "$2b$10$hashedpasswordandi123",
+      "role": "user",
+      "balance": 2000000
+    }
+  ],
+
+  "tickets": [
+    {
+      "name": "Tiket Masuk Pantai Kuta - Reguler",
+      "DestinationId": 1,
+      "price": 25000,
+      "validDate": "2026-12-31"
+    },
+    {
+      "name": "Tiket Masuk Candi Borobudur - Domestik",
+      "DestinationId": 2,
+      "price": 50000,
+      "validDate": "2026-12-31"
+    },
+    {
+      "name": "Tiket Masuk Kawah Putih - Weekday",
+      "DestinationId": 3,
+      "price": 30000,
+      "validDate": "2026-12-31"
+    },
+    {
+      "name": "Tiket Masuk Pulau Komodo - Paket Wisata",
+      "DestinationId": 4,
+      "price": 350000,
+      "validDate": "2026-12-31"
+    }
+  ],
+
+  "transactions": [
+    {
+      "UserId": 2,
+      "TicketId": 1,
+      "orderDate": "2026-08-01",
+      "totalAmount": 50000,
+      "status": "success"
+    },
+    {
+      "UserId": 3,
+      "TicketId": 2,
+      "orderDate": "2026-08-05",
+      "totalAmount": 50000,
+      "status": "pending"
+    },
+    {
+      "UserId": 4,
+      "TicketId": 4,
+      "orderDate": "2026-08-10",
+      "totalAmount": 700000,
+      "status": "success"
+    },
+    {
+      "UserId": 2,
+      "TicketId": 3,
+      "orderDate": "2026-08-15",
+      "totalAmount": 30000,
+      "status": "failed"
+    }
+  ]
+}
