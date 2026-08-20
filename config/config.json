@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "ticketopia_db",
+    "database": "tiketopia_db",
     "host": "localhost",
     "dialect": "postgres"
   },
