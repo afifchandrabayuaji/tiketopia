@@ -1,0 +1,31 @@
+<section class="max-w-md mx-auto px-4 py-16">
+  <div class="bg-white rounded-xl shadow-sm p-8 border border-gray-100">
+    <h1 class="text-xl font-bold text-center mb-1">Masuk ke Akun Anda</h1>
+    <p class="text-sm text-gray-500 text-center mb-6">Selamat datang kembali di Tiketopia</p>
+
+    <form action="/login" method="POST" class="space-y-4">
+      <div>
+        <label class="text-sm font-medium text-gray-700">Email</label>
+        <input type="email" name="email" required placeholder="contoh@email.com"
+          class="w-full border border-gray-200 rounded-lg px-3 py-2 mt-1 text-sm" />
+      </div>
+      <div>
+        <label class="text-sm font-medium text-gray-700">Password</label>
+        <input type="password" name="password" required placeholder="••••••••"
+          class="w-full border border-gray-200 rounded-lg px-3 py-2 mt-1 text-sm" />
+      </div>
+      <button type="submit" class="w-full bg-green-800 hover:bg-green-900 text-white font-medium py-2 rounded-lg">
+        Masuk
+      </button>
+    </form>
+
+    <p class="text-center text-sm text-gray-500 mt-6">
+      Belum punya akun? <a href="/register" class="text-green-800 font-medium hover:underline">Daftar di sini</a>
+    </p>
+
+    <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-gray-400 text-center">
+      Demo admin: admin@tiketopia.com / admin123<br/>
+      Demo user: andi@example.com / user123
+    </div>
+  </div>
+</section>
